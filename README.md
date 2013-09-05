@@ -27,7 +27,7 @@ a) Plugin declaration
 ###Params
     
 * **name** *(string)* : name of the plugin *(required)*
-* **methods** *(object)* : an object of methods *(optional but need a least an init method, see examples below)*
+* **methods** *(object)* : an object of methods *(optional but an "init" method is recommended, see **Methods declaration**)*
 * **options** *(object)* : an object of properties *(optional)*
 
 ###Usage
