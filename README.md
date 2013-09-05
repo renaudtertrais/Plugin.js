@@ -163,11 +163,12 @@ I need properties and methods please !
     $("#element").highlight("change");          //font color in red
     $("#element").highlight("change","blue");   //font color in blue
     $("#element").highlight("change");          //font color in red
-    $("#element").highlight({ color:"blue" });  //font color in blue
+    $("#element").highlight({ color:"blue" });  //change the property color
     $("#element").highlight("change");          //font color in blue
     $("#element").highlight("change","#F00");   //font color in red
-    $("#element")
-        .highlight({ color:"green" })           //change the property color
+    
+    $("#element-2")
+        .highlight({ color:"green" })           //declaration with properties, font color in green
         .highlight("change");                   //font color in green
         
     
