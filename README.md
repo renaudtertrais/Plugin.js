@@ -1,6 +1,6 @@
 Plugin.js
 =========
-A lightweight(4ko) jquery plugin bootstrap
+A lightweight(471 bytes) jquery plugin bootstrap
 
 
 1. Getting stated
