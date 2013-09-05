@@ -162,7 +162,7 @@ I need properties and methods please !
     $("#element").highlight();                  //font color in red
     $("#element").highlight("change");          //font color in red
     $("#element").highlight("change","blue");   //font color in blue
-    
+    $("#element").highlight("change");          //font color in red
     $("#element").highlight({ color:"blue" });  //font color in blue
     $("#element").highlight("change");          //font color in blue
     $("#element").highlight("change","#F00");   //font color in red
