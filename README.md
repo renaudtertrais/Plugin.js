@@ -145,7 +145,7 @@ I need properties and methods please !
     var myPlugin = new Plugin("highlight");
     
     // default properties
-    myPlugin.options.color = "#F00";
+    myPlugin.defaults.color = "#F00";
     
     // Methods
     myPlugin.methods.init = function($this,options,methods){
