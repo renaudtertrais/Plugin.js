@@ -1,6 +1,8 @@
 Plugin.js
 =========
-A lightweight(471 bytes) jquery plugin bootstrap
+A lightweight (0.5kb) jQuery plugins bootstrap. Actually, this little piece of code allow you to build very easily basic & advanced jQuery plugins.
+
+See a [demo here](http://emaj-fr.github.io/Plugin.js/)
 
 
 1. Getting stated
