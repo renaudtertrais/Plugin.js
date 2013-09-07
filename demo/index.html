@@ -3,48 +3,138 @@
 <head>
 	<meta charset="UTF-8">
 	<title>demo</title>
+	<link rel="stylesheet" href="css/bootstrap.min.css">
+	<link rel="stylesheet" href="css/monokai.css">
 	<script src="js/jquery.min.1.10.2.js"></script>
 	<script src="js/bootstrap.min.js"></script>
+	<script src="js/highlight.pack.js"></script>
 	<script src="../js/Plugin.min.js"></script>
-	<script src="js/jquery.pluginDemo.js"></script>
+	<script src="js/jquery.demo.js"></script>
 	<script type="text/javascript">
 		$(document).ready(function(){
-			$("h1").demo();
-			var defaults = {
-				color : 'grey',
-				text  : 'demo of Plugin.js'
-			};
+			// init
+			$(".ball").eq(0).demo();
+			$(".ball").eq(1).demo({x:200});
+
 			// events
-			$("#reset" 					).on("click",function(){ $("h1").demo(defaults); 					});
-			$("#change" 				).on("click",function(){ $("h1").demo("change"); 					});
-			$("#update-property-text"	).on("click",function(){ $("h1").demo({ text  : $("#text").val()}); });
-			$("#update-property-color"	).on("click",function(){ $("h1").demo({ color : "blue" 			}); });
-			$("#change-color" 			).on("click",function(){ $("h1").demo("change" , {color : "red" });	});
-			$("#change-color-text" 		).on("click",function(){ $("h1").demo("change" , {color : "orange",text  : $("#text").val()	}); });
+			$("#play").on("click",function(){ 
+				$(".ball").demo({play:true}).demo("run");
+			});
+			$("#stop").on("click",function(){ 
+				$(".ball").demo({play:false});
+			});
+			$("#slower").on("click",function(){ 
+				$(".ball").demo({
+					speed : Math.max( 5 , $(".ball").demo("get","speed") / 2 )
+				});
+			});
+			$("#faster").on("click",function(){ 
+				console.log($(".ball").demo("get","speed"));
+				$(".ball").demo({
+					speed : Math.min( 80 , $(".ball").demo("get","speed") * 2 )
+				});
+			});
+			$("#smaller").on("click",function(){
+				$(".ball").demo({
+					size : Math.max( 10 , $(".ball").demo("get","size") /2 )
+				}).demo("change");
+			});
+			$("#bigger").on("click",function(){ 
+				$(".ball").demo({
+					size : Math.min( 300 , $(".ball").demo("get","size") *2 )
+				}).demo("change");
+			});
+			$("#change-color").on("click",function(){ 
+				$(".ball").demo({
+					color : "rgb("+
+						Math.round(Math.random()*200+30)+","+
+						Math.round(Math.random()*200+30)+","+
+						Math.round(Math.random()*200+30)+")"
+				}).demo("change");
+			});
+			$("#add").on("click",function(){ 
+				$ball = $("<div />");
+				$ball.addClass("ball");
+				$(".well").append($ball);
+				$(".ball").demo();
+			});
+			$("#remove").on("click",function(){ 
+				$(".ball:last-child").remove();
+			});
+			
+			// else
+			$.ajax("js/jquery.demo.js",{
+				success:function(txt){
+					$("#plugin").html("<pre><code>"+txt+"</code></pre>");
+					 hljs.tabReplace = '  ';
+					$('pre code').each(function(i, e) {hljs.highlightBlock(e)});
+				}
+			})
+
 		});
 	</script>
-	<link rel="stylesheet" href="css/bootstrap.min.css">
+	
 	<style>
 	body{
-		padding:5%;
+		padding:0 5%;
+	}
+	.well{
+		height: 400px;
+		position: relative;
+		overflow: hidden;
+		padding: 0;
+	}
+	.ball{
+		-webkit-border-radius: 1000px;
+		-moz-border-radius: 1000px;
+		border-radius: 1000px;
+		position: absolute;
+		-webkit-transition: background-color .5s;
+		-moz-transition: background-color .5s;
+		-ms-transition: background-color .5s;
+		-o-transition: background-color .5s;
+		transition: background-color .5s;
 	}
 	</style>
 </head>
 <body>
-	<div class="input-group">
-		<input type="text" class="form-control" id="text" value="Hello World">
-		<span class="input-group-btn">
-			<button class="btn btn-default" type="button" id="update-property-text">update property text</button>
-		</span>
+	
+	<div class="page-header">
+		<h1>Plugin.js <small>demo</small></h1>
 	</div>
-	<br>
-	<div class="btn-group">
-		<button type="button" class="btn btn-default" id="change">change()</button>
-		<button type="button" class="btn btn-default" id="reset">reset properties</button>
-		<button type="button" class="btn btn-primary" id="update-property-color">update property color : blue</button>
-		<button type="button" class="btn btn-danger"  id="change-color">change( color : red )</button>
-		<button type="button" class="btn btn-warning" id="change-color-text">change( color : orange ,text : input-text )</button>
+
+	<ul class="nav nav-tabs">
+		<li class="active"><a href="#demo" data-toggle="tab">demo</a></li>
+		<li><a href="#plugin" data-toggle="tab">jquery.demo.js</a></li>
+	</ul>
+	<br><br>
+	<div class="tab-content">
+ 		<div class="tab-pane active" id="demo">
+			<div class="btn-group">
+				<button type="button" class="btn btn-primary" id="play">play</button>
+				<button type="button" class="btn btn-danger" id="stop">stop</button>
+			</div>
+			<div class="btn-group">
+				<button type="button" class="btn btn-default" id="slower">slower</button>
+				<button type="button" class="btn btn-default" id="faster">faster</button>
+			</div>	
+			<div class="btn-group">
+				<button type="button" class="btn btn-default" id="smaller">smaller</button>
+				<button type="button" class="btn btn-default" id="bigger">bigger</button>
+			</div>
+			<div class="btn-group">
+				<button type="button" class="btn btn-warning" id="change-color">Change color</button>
+			</div>
+			<div class="btn-group">
+				<button type="button" class="btn btn-primary" id="add">add</button>
+				<button type="button" class="btn btn-danger" id="remove">remove</button>
+			</div>
+			<br><br>
+			<div class="well">
+				<div class="ball"></div>
+			</div>
+		</div>
+		<div class="tab-pane" id="plugin"></div>
 	</div>
-	<h1></h1>
 </body>
 </html>
