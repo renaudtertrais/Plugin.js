@@ -36,8 +36,8 @@ As usual
     $("#my-id").myPlugin();
 
 
-###Differences between proceral and OOP
-* **Procedural** is more convinient for people who aren't used to OOP.
+###Differences between procedural and OOP
+* **Procedural** is more convenient for people who aren't used to OOP.
 * **OOP** allow you to create methods and properties *(options)* outside of the "creation" of the plugin *(see examples below)*
 
 
@@ -61,7 +61,7 @@ b) Methods declaration
 ####Default behavior : init method
 You can create an init method called "init" (ok...) in order to give a default behavior to your element
 ####Return value
-Methods will automatically return a jquery object in order to keep the jquery chain. But you can return specific values from method. Just remember that it will break the jquery chain (like $.attr(value)). This a example of how to make easily a getter :
+Methods will automatically return a jquery object in order to keep the jquery chain. But you can return specific values from methods. Just remember that it will break the jquery chain (like $.attr(value)). This is an example of how to make easily a getter :
 
     myPlugin.methods.get = function($this,options,methods,property){
         return options[property];
