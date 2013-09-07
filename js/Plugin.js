@@ -11,6 +11,7 @@ function Plugin( name, methods, defaults){
             var $this = $(this);
             // first is a string so you want to call a method, but check if $this.data(name) exist => init the plugin
             if($this.data(name) && typeof(first)=="string"){
+                console.log($.fn[name]);
                 if($.fn[name].methods.hasOwnProperty(first)){
                     returnValue = $.fn[name].methods[first]($this,$this.data(name).options,methods,second);
                 }

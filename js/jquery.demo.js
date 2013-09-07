@@ -1,4 +1,4 @@
-pluginDemo = new Plugin("demo")
+var pluginDemo = new Plugin("demo")
 
 // * * * PROPERTIES * * *
 
@@ -31,7 +31,6 @@ pluginDemo.methods.get = function($this,options,methods,property){
 pluginDemo.methods.change = function($this,options,methods,params){
 	// merge params default options
 	params = $.extend(params,options);
-	console.log(options);
 	$this.css({
 		backgroundColor : params.color,
 		top 			: options.y,
