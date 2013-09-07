@@ -5,8 +5,24 @@
 	<title>demo</title>
 	<script src="js/jquery.min.1.10.2.js"></script>
 	<script src="js/bootstrap.min.js"></script>
-	<script src="../js/Plugin.js"></script>
-	<script src="js/main.js"></script>
+	<script src="../js/Plugin.min.js"></script>
+	<script src="js/jquery.pluginDemo.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function(){
+			$("h1").demo();
+			var defaults = {
+				color : 'grey',
+				text  : 'demo of Plugin.js'
+			};
+			// events
+			$("#reset" 					).on("click",function(){ $("h1").demo(defaults); 					});
+			$("#change" 				).on("click",function(){ $("h1").demo("change"); 					});
+			$("#update-property-text"	).on("click",function(){ $("h1").demo({ text  : $("#text").val()}); });
+			$("#update-property-color"	).on("click",function(){ $("h1").demo({ color : "blue" 			}); });
+			$("#change-color" 			).on("click",function(){ $("h1").demo("change" , {color : "red" });	});
+			$("#change-color-text" 		).on("click",function(){ $("h1").demo("change" , {color : "orange",text  : $("#text").val()	}); });
+		});
+	</script>
 	<link rel="stylesheet" href="css/bootstrap.min.css">
 	<style>
 	body{
