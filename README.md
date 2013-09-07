@@ -58,10 +58,29 @@ b) Methods declaration
     $("#my-id").myPlugin( "myMethod" , "Hello world!" );
     
 ###Advices
-1. You can create an init method called "init" (ok...) in order to give some default behavior to your element
-2. When creating methods, be carreful to give everything needed to method that your are calling :
+####Default behavior : init method
+You can create an init method called "init" (ok...) in order to give a default behavior to your element
+####Return value
+Methods will automatically return a jquery object in order to keep the jquery chain. But you can return specific values from method. Just remember that it will break the jquery chain (like $.attr(value)). This a example of how to make easily a getter :
 
-####Bad example
+    myPlugin.methods.get = function($this,options,methods,property){
+        return options[property];
+    }
+
+So now you have setters and getters for your properties : 
+
+    // Setter
+    $("#element").highlight({ color:"green" }) 
+    
+    // Getter 
+    var color = $("#element").highlight( "get" , "color" );
+    
+
+####Calling methods
+
+When creating methods, be carreful to give everything needed to method that your are calling :
+
+#####Bad example
     {
         myMethod_1 : function(){
             ...
@@ -76,7 +95,7 @@ b) Methods declaration
     $("#my-id").myPlugin( "method_2" ); // no problem
     $("#my-id").myPlugin( "method_1" ); // ouch ! $this not defined, options not defined
     
-####Good example
+#####Good example
     {
         myMethod_1 : function( $this , options){    // even if I don't need it in that method...
             ...
