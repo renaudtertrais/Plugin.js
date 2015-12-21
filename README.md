@@ -11,7 +11,7 @@ See a [demo here](http://emaj-fr.github.io/Plugin.js/)
 Just add the file in your project :
 
 ```html
-<script src="js/Plugin.js"></scrip>
+<script src="js/Plugin.js"></script>
 ```
     
 And that's all folks !
